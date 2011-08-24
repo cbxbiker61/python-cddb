@@ -16,5 +16,5 @@ Installation:
 ./setup.py install
 
 Any future improvements will be made here:
-	http://github.com/cbxbiker61/cddb
+	http://github.com/cbxbiker61/python-cddb
 
