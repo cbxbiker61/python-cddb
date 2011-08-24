@@ -1,0 +1,20 @@
+Copyright 2011 Kelly Anderson cbxbiker61@gmail.com
+Based on PyCDDB by Roland Schäuble. That was last worked on in 2007.
+
+Hey, I needed a CDDB implementation that worked with Python3 so I reworked PyCDDB.
+This version is much more pythonic in it's implementation.
+It's pretty much a piece of cake to use. Take a look at TestCddb.py.
+I versioned it as 1.0.0 since I don't think it will require much tinkering
+in the future.
+
+Current external requirements:
+	python3
+	discid
+
+Installation:
+./setup.py build
+./setup.py install
+
+Any future improvements will be made here:
+	http://github.com/cbxbiker61/cddb
+
