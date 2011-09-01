@@ -4,7 +4,7 @@ Access a freedb service from Python.
 
 import getpass, os, re, socket, subprocess, sys, urllib.parse, urllib.request
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 class CommandException(RuntimeError):
 	status = None
@@ -57,8 +57,13 @@ class CddbDiscInfo:
 		self.tracks = tracks
 
 class CddbServer:
-	def __init__(self, cddbServer = 'http://freedb.freedb.org/~cddb/cddb.cgi',
+	def __init__(self, device = None, cddbServer = 'http://freedb.freedb.org/~cddb/cddb.cgi',
 			app = "PythonCddbServer", version = __version__):
+		self.device = "/dev/cdrom" if os.path.exists("/dev/cdrom") else "/dev/sr0"
+
+		if device:
+			self.device = device
+
 		self.cddbServer = cddbServer
 		self.host = socket.gethostname()
 		self.app = app
@@ -82,7 +87,7 @@ class CddbServer:
 		discs = None
 
 		if not discid:
-			discid = runCommand(['discid'])
+			discid = runCommand(['discid', self.device])
 
 		if discid:
 			self.track_offset = map(int, discid.split()[2:-1])
